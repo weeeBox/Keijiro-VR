@@ -8,19 +8,38 @@ using Matrix = UnityEngine.Matrix4x4;
 [RequireComponent(typeof(MeshRenderer))]
 public class Processing : MonoBehaviour
 {
-    [SerializeField]
-    private Mesh cubeMesh;
+    Mesh m_mesh;
+
+    bool m_meshDirty;
+    List<Vector3> m_vertices;
+    List<Vector3> m_normals;
+    List<int> m_triangles;
 
     void OnEnable()
     {
-        var meshData = MeshDataFactory.box(1, 1, 1);
+        m_vertices = new List<Vector3>();
+        m_normals = new List<Vector3>();
+        m_triangles = new List<int>();
 
         var meshFilter = GetComponent<MeshFilter>();
-        Mesh mesh = new Mesh();
-        mesh.vertices = meshData.vertices;
-        mesh.triangles = meshData.triangles;
-        mesh.RecalculateNormals();
-        meshFilter.mesh = mesh;
+        m_mesh = new Mesh();
+        m_mesh.MarkDynamic();
+        meshFilter.mesh = m_mesh;
+    }
+
+    void Update()
+    {
+        if (m_meshDirty)
+        {
+            m_mesh.SetVertices(m_vertices);
+            m_mesh.SetNormals(m_normals);
+            m_mesh.SetTriangles(m_triangles, 0);
+            m_meshDirty = false;
+
+            m_vertices.Clear();
+            m_normals.Clear();
+            m_triangles.Clear();
+        }
     }
 
     /// <summary>
@@ -40,6 +59,23 @@ public class Processing : MonoBehaviour
     /// <param name="d">Dimension of the box in the z-dimension.</param>
     public void box(float w, float h, float d)
     {
+        AddMesh(MeshDataFactory.box(w, h, d));
+    }
+
+    void AddMesh(MeshData meshData)
+    {
+        int triangleOffset = m_vertices.Count;
+
+        m_vertices.AddRange(meshData.vertices);
+        m_normals.AddRange(meshData.normals);
+
+        var triangles = meshData.triangles;
+        for (int i = 0; i < triangles.Length; ++i)
+        {
+            m_triangles.Add(triangleOffset + triangles[i]);
+        }
+
+        m_meshDirty = true;
     }
 }
 
@@ -84,6 +120,39 @@ public static class MeshDataFactory
             /* 23 */ new Vector3(-w2, -h2, d2),
         };
 
+        Vector3[] normals =
+        {
+            /* 0 */  Vector3.back,
+            /* 1 */  Vector3.back,
+            /* 2 */  Vector3.back,
+            /* 3 */  Vector3.back,
+
+            /* 4 */  Vector3.right,
+            /* 5 */  Vector3.right,
+            /* 6 */  Vector3.right,
+            /* 7 */  Vector3.right,
+
+            /* 8 */  Vector3.forward,
+            /* 9 */  Vector3.forward,
+            /* 10 */ Vector3.forward,
+            /* 11 */ Vector3.forward,
+
+            /* 12 */ Vector3.left,
+            /* 13 */ Vector3.left,
+            /* 14 */ Vector3.left,
+            /* 15 */ Vector3.left,
+
+            /* 16 */ Vector3.up,
+            /* 17 */ Vector3.up,
+            /* 18 */ Vector3.up,
+            /* 19 */ Vector3.up,
+
+            /* 20 */ Vector3.down,
+            /* 21 */ Vector3.down,
+            /* 22 */ Vector3.down,
+            /* 23 */ Vector3.down,
+        };
+
         int[] triangles = {
             0, 1, 3, 2, 3, 1,
             4, 5, 7, 6, 7, 5,
@@ -93,18 +162,28 @@ public static class MeshDataFactory
             20, 21, 23, 22, 23, 21,
         };
 
-        return new MeshData(vertices, triangles);
+        return new MeshData(vertices, normals, triangles);
     }
 }
 
 public struct MeshData
 {
     public readonly Vector3[] vertices;
+    public readonly Vector3[] normals;
     public readonly int[] triangles;
 
-    public MeshData(Vector3[] vertices, int[] triangles)
+    public MeshData(Vector3[] vertices, Vector3[] normals, int[] triangles)
     {
         this.vertices = vertices;
+        this.normals = normals;
         this.triangles = triangles;
+    }
+
+    public void ApplyTransform(Matrix matrix)
+    {
+        for (int i = 0; i < vertices.Length; ++i)
+        {
+            vertices[i] = matrix.MultiplyVector(vertices[i]);
+        }
     }
 }
