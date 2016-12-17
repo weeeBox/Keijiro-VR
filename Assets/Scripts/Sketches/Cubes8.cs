@@ -63,8 +63,8 @@ public class Cubes8 : Processing
 
                 s *= abs((id * 0.07151f + time * 6) % 2 - 1);
 
-                // if (colored)
-                //    fill(1 - s * 0.6, 0.4, 1);
+                 if (colored)
+                    fill(1 - s * 0.6f, 0.4f, 1);
 
                 pushMatrix();
                 translate(0, y, 0);

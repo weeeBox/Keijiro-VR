@@ -6,13 +6,14 @@ using Matrix = UnityEngine.Matrix4x4;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
-public abstract class Processing : MonoBehaviour
+public abstract partial class Processing : MonoBehaviour
 {
     protected const float PI = 3.1415927f;
 
     Mesh m_mesh;
     bool m_meshDirty;
     List<Vector3> m_vertices;
+    List<Color> m_colors;
     List<int> m_triangles;
 
     Matrix m_matrix;
@@ -28,6 +29,7 @@ public abstract class Processing : MonoBehaviour
         frameRate(24);
 
         m_vertices = new List<Vector3>();
+        m_colors = new List<Color>();
         m_triangles = new List<int>();
 
         var meshFilter = GetComponent<MeshFilter>();
@@ -56,10 +58,12 @@ public abstract class Processing : MonoBehaviour
             {
                 m_mesh.SetVertices(m_vertices);
                 m_mesh.SetTriangles(m_triangles, 0);
+                m_mesh.SetColors(m_colors);
                 m_mesh.RecalculateNormals();
                 m_meshDirty = false;
 
                 m_vertices.Clear();
+                m_colors.Clear();
                 m_triangles.Clear();
             }
 
@@ -340,8 +344,8 @@ public abstract class Processing : MonoBehaviour
             var vertex = vertices[i];
             vertex.Scale(scale);
             m_vertices.Add(m_matrix.MultiplyPoint3x4(vertex));
+            m_colors.Add(m_fillColor);
         }
-
 
         for (int i = 0; i < triangles.Length; ++i)
         {
