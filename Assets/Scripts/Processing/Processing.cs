@@ -8,8 +8,6 @@ using Matrix = UnityEngine.Matrix4x4;
 [RequireComponent(typeof(MeshRenderer))]
 public abstract partial class Processing : MonoBehaviour
 {
-    protected const float PI = 3.1415927f;
-
     Mesh m_mesh;
     bool m_meshDirty;
     List<Vector3> m_vertices;

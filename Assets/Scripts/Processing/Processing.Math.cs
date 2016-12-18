@@ -3,6 +3,8 @@ using UnityEngine;
 
 public partial class Processing
 {
+    protected const float PI = 3.1415927f;
+
     #region Calculation
 
     /// <summary>
