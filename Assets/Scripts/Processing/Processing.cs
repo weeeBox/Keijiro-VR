@@ -80,26 +80,6 @@ public abstract partial class Processing : MonoBehaviour
 
     #endregion
     
-    /// <summary>
-    /// A box is an extruded rectangle. A box with equal dimensions on all sides is a cube.
-    /// </summary>
-    /// <param name="size">Dimension of the box in all dimensions (creates a cube).</param>
-    protected void box(float size)
-    {
-        box(size, size, size);
-    }
-    
-    /// <summary>
-    /// A box is an extruded rectangle. A box with equal dimensions on all sides is a cube.
-    /// </summary>
-    /// <param name="w">Dimension of the box in the x-dimension.</param>
-    /// <param name="h">Dimension of the box in the y-dimension.</param>
-    /// <param name="d">Dimension of the box in the z-dimension.</param>
-    protected void box(float w, float h, float d)
-    {
-        AddPrimitive(Primitives.Box, new Vector3(w, h, d));
-    }
-
     #region Primitives
 
     void AddPrimitive(Primitive primitive, Vector3 scale)
