@@ -74,7 +74,24 @@ public partial class Sketch
     //    log()
     //    mag()
     //    map()
-    //    max()
+
+
+    /// <summary>
+    /// Determines the largest value in a sequence of numbers, and then returns that value. max() accepts either two or three float or int values as parameters, or an array of any length.
+    /// </summary>
+    protected float max(float a, float b)
+    {
+        return Mathf.Max(a, b);
+    }
+
+    /// <summary>
+    /// Determines the largest value in a sequence of numbers, and then returns that value. max() accepts either two or three float or int values as parameters, or an array of any length.
+    /// </summary>
+    protected float max(int a, int b)
+    {
+        return Mathf.Max(a, b);
+    }
+
     //    min()
     //    norm()
     //    pow()
