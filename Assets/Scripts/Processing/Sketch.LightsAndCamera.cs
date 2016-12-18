@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public partial class Processing
+public partial class Sketch
 {
     #region Lights
 

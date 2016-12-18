@@ -5,7 +5,7 @@ using UnityEngine;
 
 using Matrix = UnityEngine.Matrix4x4;
 
-public partial class Processing
+public partial class Sketch
 {
     private Matrix m_matrix;
     private Stack<Matrix> m_matrixStack;

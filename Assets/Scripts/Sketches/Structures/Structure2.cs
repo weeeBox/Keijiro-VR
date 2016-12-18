@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Structure2 : Processing
+public class Structure2 : Sketch
 {
     protected override void setup()
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public partial class Processing
+public partial class Sketch
 {
     #region 3D Primitives
 

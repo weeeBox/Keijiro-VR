@@ -6,7 +6,7 @@ using Matrix = UnityEngine.Matrix4x4;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
-public abstract partial class Processing : MonoBehaviour
+public abstract partial class Sketch : MonoBehaviour
 {
     private static readonly Matrix kIdentityMatrix = Matrix.TRS(Vector3.zero, Quaternion.AngleAxis(180, Vector3.right), Vector3.one);
 

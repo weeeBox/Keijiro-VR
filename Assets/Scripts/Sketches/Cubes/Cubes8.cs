@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cubes8 : Processing
+public class Cubes8 : Sketch
 {
     [SerializeField]
     bool colored = true;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-public partial class Processing
+public partial class Sketch
 {
     protected const float PI = 3.1415927f;
 

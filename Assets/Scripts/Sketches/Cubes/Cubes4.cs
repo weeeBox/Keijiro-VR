@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cubes4 : Processing
+public class Cubes4 : Sketch
 {
     protected override void setup()
     {

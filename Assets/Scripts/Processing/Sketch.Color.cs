@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public partial class Processing
+public partial class Sketch
 {
     protected const int RGB = 1;
     protected const int HSB = 2;
