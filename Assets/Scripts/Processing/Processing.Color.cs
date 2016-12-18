@@ -108,8 +108,21 @@ public partial class Processing
         }
     }
 
+    protected void fill(color color)
+    {
+        warning("fill(color)");
+    }
+
     // noFill()
-    // noStroke()
+
+    /// <summary>
+    /// Disables drawing the stroke (outline). If both noStroke() and noFill() are called, nothing will be drawn to the screen.
+    /// </summary>
+    protected void noStroke()
+    {
+        warning("noStroke()");
+    }
+
     // stroke()
 
     #endregion
@@ -119,10 +132,32 @@ public partial class Processing
     // alpha()
     // blue()
     // brightness()
-    // color()
+
+    protected int color(float gray, float alpha = 1)
+    {
+        return 0;
+    }
+
+    protected int color(float v1, float v2, float v3, float alpha = 1)
+    {
+        return 0;
+    }
+
     // green()
     // hue()
-    // lerpColor()
+
+    /// <summary>
+    /// Calculates a color or colors between two color at a specific increment. The amt parameter is the amount to interpolate between the two values where 0.0 equal to the first point, 0.1 is very near the first point, 0.5 is halfway in between, etc. 
+    /// An amount below 0 will be treated as 0. Likewise, amounts above 1 will be capped at 1. This is different from the behavior of lerp(), but necessary because otherwise numbers outside the range will produce strange and unexpected colors.
+    /// </summary>
+    /// <param name="c1">interpolate from this color</param>
+    /// <param name="c2">interpolate to this color</param>
+    /// <param name="amt">between 0.0 and 1.0</param>
+    protected int lerpColor(int c1, int c2, float amt)
+    {
+        return c1; // FIXME
+    }
+
     // red()
     // saturation()
 

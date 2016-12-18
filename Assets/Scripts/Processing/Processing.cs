@@ -106,7 +106,7 @@ public abstract partial class Processing : MonoBehaviour
 
     #region Debug
 
-    [System.Diagnostics.Conditional("UNITY_EDITOR")]
+    [System.Diagnostics.Conditional("SHOW_WARNINGS")]
     protected void warning(string name)
     {
         Debug.LogWarning("NOT IMPLEMENTED:" + name);
