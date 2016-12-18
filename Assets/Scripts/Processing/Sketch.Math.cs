@@ -109,7 +109,14 @@ public partial class Sketch
     }
 
     //    degrees()
-    //    radians()
+
+    /// <summary>
+    /// Converts a degree measurement to its corresponding value in radians. Radians and degrees are two ways of measuring the same thing. There are 360 degrees in a circle and 2*PI radians in a circle. For example, 90° = PI/2 = 1.5707964. All trigonometric functions in Processing require their parameters to be specified in radians.
+    /// </summary>
+    protected float radians(float degrees)
+    {
+        return degrees * Mathf.Deg2Rad;
+    }
 
     /// <summary>
     /// Calculates the sine of an angle. This function expects the values of the angle parameter to be 
