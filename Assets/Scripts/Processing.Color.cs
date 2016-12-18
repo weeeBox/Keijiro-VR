@@ -11,7 +11,50 @@ public partial class Processing
 
     #region Setting
 
-    // background()
+    /// <summary>
+    /// The background() function sets the color used for the background of the Processing window. The default background is light gray. This function is typically used within draw() to clear the display window at the beginning of each frame, but it can be used inside setup() to set the background on the first frame of animation or if the backgound need only be set once. 
+    ///
+    /// An image can also be used as the background for a sketch, although the image's width and height must match that of the sketch window. Images used with background() will ignore the current tint() setting. To resize an image to the size of the sketch window, use image.resize(width, height). 
+    ///
+    /// It is not possible to use the transparency alpha parameter with background colors on the main drawing surface.It can only be used along with a PGraphics object and createGraphics().
+    /// </summary>
+    /// <param name="rgb">Any value of the color datatype</param>
+    /// <param name="alpha">Opacity of the background</param>
+    protected void background(int rgb, float alpha = 1)
+    {
+        warning("background(rgb, alpha)");
+    }
+
+    /// <summary>
+    /// The background() function sets the color used for the background of the Processing window. The default background is light gray. This function is typically used within draw() to clear the display window at the beginning of each frame, but it can be used inside setup() to set the background on the first frame of animation or if the backgound need only be set once. 
+    ///
+    /// An image can also be used as the background for a sketch, although the image's width and height must match that of the sketch window. Images used with background() will ignore the current tint() setting. To resize an image to the size of the sketch window, use image.resize(width, height). 
+    ///
+    /// It is not possible to use the transparency alpha parameter with background colors on the main drawing surface.It can only be used along with a PGraphics object and createGraphics().
+    /// </summary>
+    /// <param name="gray">Specifies a value between white and black</param>
+    /// <param name="alpha">Opacity of the background</param>
+    protected void background(float gray, float alpha = 1)
+    {
+        warning("background(gray, alpha)");
+    }
+
+    /// <summary>
+    /// The background() function sets the color used for the background of the Processing window. The default background is light gray. This function is typically used within draw() to clear the display window at the beginning of each frame, but it can be used inside setup() to set the background on the first frame of animation or if the backgound need only be set once. 
+    ///
+    /// An image can also be used as the background for a sketch, although the image's width and height must match that of the sketch window. Images used with background() will ignore the current tint() setting. To resize an image to the size of the sketch window, use image.resize(width, height). 
+    ///
+    /// It is not possible to use the transparency alpha parameter with background colors on the main drawing surface.It can only be used along with a PGraphics object and createGraphics().
+    /// </summary>
+    /// <param name="v1">Red or hue value (depending on the current color mode)</param>
+    /// <param name="v2">Green or saturation value (depending on the current color mode)</param>
+    /// <param name="v3">Blue or brightness value (depending on the current color mode)</param>
+    /// <param name="alpha"></param>
+    protected void background(float v1, float v2, float v3, float alpha = 1)
+    {
+        warning("background(v1, v2, v3, alpha)");
+    }
+
     // clear()
 
     /// <summary>
