@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
+using Random = UnityEngine.Random;
+
 public partial class Processing
 {
     protected const float PI = 3.1415927f;
@@ -154,9 +156,32 @@ public partial class Processing
     }
 
     // noiseSeed()
-    // random()
+
+    /// <summary>
+    /// Generates random numbers. Each time the random() function is called, it returns an unexpected value within the specified range. If only one parameter is passed to the function, it will return a float between zero and the value of the high parameter. For example, random(5) returns values between 0 and 5 (starting at zero, and up to, but not including, 5).
+    /// </summary>
+    protected float random(float high)
+    {
+        return Random.Range(0, high);
+    }
+
+    /// <summary>
+    /// Generates random numbers. Each time the random() function is called, it returns an unexpected value within the specified range. If only one parameter is passed to the function, it will return a float between zero and the value of the high parameter. For example, random(5) returns values between 0 and 5 (starting at zero, and up to, but not including, 5).
+    /// </summary>
+    protected float random(float low, float high)
+    {
+        return Random.Range(low, high);
+    }
+
     // randomGaussian()
-    // randomSeed()
+
+    /// <summary>
+    /// Sets the seed value for random(). By default, random() produces different results each time the program is run. Set the seed parameter to a constant to return the same pseudo-random numbers each time the software is run.
+    /// </summary>
+    protected void randomSeed(int seed)
+    {
+        Random.seed = seed;
+    }
 
     #endregion
 }
