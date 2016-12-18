@@ -8,6 +8,8 @@ using Matrix = UnityEngine.Matrix4x4;
 [RequireComponent(typeof(MeshRenderer))]
 public abstract partial class Processing : MonoBehaviour
 {
+    private static readonly Matrix kIdentityMatrix = Matrix.TRS(Vector3.zero, Quaternion.identity, new Vector3(1, -1, -1));
+
     Mesh m_mesh;
     bool m_meshDirty;
     List<Vector3> m_vertices;
@@ -32,8 +34,9 @@ public abstract partial class Processing : MonoBehaviour
         m_mesh.MarkDynamic();
         meshFilter.mesh = m_mesh;
 
-        m_matrix = Matrix.identity;
         m_matrixStack = new Stack<Matrix>();
+
+        Reset();
 
         setup();
     }
@@ -44,8 +47,7 @@ public abstract partial class Processing : MonoBehaviour
         if (m_frameElapsed > m_frameTime)
         {
             m_frameElapsed = 0.0f;
-            m_matrixStack.Clear();
-            m_matrix = Matrix.identity;
+            Reset();
 
             draw();
 
@@ -64,6 +66,12 @@ public abstract partial class Processing : MonoBehaviour
 
             ++m_frameCount;
         }
+    }
+
+    private void Reset()
+    {
+        m_matrixStack.Clear();
+        m_matrix = kIdentityMatrix;
     }
 
     #region Structure
