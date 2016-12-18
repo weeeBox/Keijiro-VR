@@ -8,7 +8,7 @@ using Matrix = UnityEngine.Matrix4x4;
 [RequireComponent(typeof(MeshRenderer))]
 public abstract partial class Processing : MonoBehaviour
 {
-    private static readonly Matrix kIdentityMatrix = Matrix.TRS(Vector3.zero, Quaternion.identity, new Vector3(1, -1, -1));
+    private static readonly Matrix kIdentityMatrix = Matrix.TRS(Vector3.zero, Quaternion.AngleAxis(180, Vector3.right), Vector3.one);
 
     Mesh m_mesh;
     bool m_meshDirty;
@@ -70,7 +70,10 @@ public abstract partial class Processing : MonoBehaviour
 
     private void Reset()
     {
-        m_matrixStack.Clear();
+        if (m_matrixStack != null)
+        {
+            m_matrixStack.Clear();
+        }
         m_matrix = kIdentityMatrix;
     }
 
