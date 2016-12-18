@@ -6,7 +6,7 @@ public partial class Processing
     protected const int RGB = 1;
     protected const int HSB = 2;
 
-    private Color m_fillColor;
+    private Color m_fillColor = Color.white;
     private int m_mode = RGB;
 
     #region Setting
